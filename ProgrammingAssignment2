@@ -1,0 +1,32 @@
+makeCacheMatrix <- function(x = matrix()) { 
+#Defining my make Cache Matrix fucntion
+  y <- NULL
+  set <- function(z){ #Creating a set fucntion
+  x <<- z
+  y <<- NULL
+  }
+  get <- function()x 
+#Function to grab the inverse matrix
+  setInverse <- function(inverse) y <<- inverse 
+#Creating the inverse matric
+  getInverse <- function() z 
+#Creating a list of the results of the make cache function
+  list(set = set, get = get,
+  setInverse = setInverse, 
+  getInverse = getInverse)
+}
+
+cacheSolve <- function(x, ...) {
+#Functio that produces a matrix that is the inverse of 'x'
+  z <- x$getInverse()
+#Defining the get inverse function for matrix x
+  if(!is.null(z)){
+  return(z)
+#If statement which returns non null-z values
+  }
+  mat <- x$get()
+  z <- solve(mat,...)
+  x$setInverse(z)
+  z
+#Completing the solve function
+}
